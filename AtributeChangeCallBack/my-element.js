@@ -3,18 +3,28 @@ class myElement extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
   }
-
+  static get ObserverAtributes() {
+    return 'title', 'parrafo', 'img';
+  }
+  attributeChangedCallback(atribute, oldVal, newVal) {
+    if (atribute === 'title') {
+      this.title = newVal;
+    }
+    if (atribute === 'parrafo') {
+      this.parrafo = newVal;
+    }
+    if (atribute === 'parrafo') {
+      this.img = newVal;
+    }
+  }
   getTemplate() {
     const template = document.createElement('template');
     template.innerHTML = `
     <section>
-     <h2>
-        <slot name="title"></slot>
-     </h2>
+     <h2>${this.title}</h2>
      <div>
-      <p>
-        <slot name="parrafo"></slot>
-      </p>
+      <p>${this.parrafo}</p>
+      <img src=${this.img}/>
      </div>
     </section>
     ${this.getStyles()}
@@ -25,7 +35,7 @@ class myElement extends HTMLElement {
   getStyles() {
     return `
     <style>
-      .h2{
+      h2{
         color:blue
       }
     </style>

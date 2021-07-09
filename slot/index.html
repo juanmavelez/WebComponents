@@ -8,7 +8,11 @@
 </head>
 
 <body>
-  <my-element></my-element>
+  <h2>Soy un titulo</h2>
+  <my-element>
+    <span slot="title">Soy un texto que tiene que ser mostrado</span>
+    <span slot="parrafo">yo soy parrafo</span>
+  </my-element>
   <script type="module" src="./my-element.js"></script>
 </body>
 
